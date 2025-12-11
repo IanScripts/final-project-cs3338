@@ -1,7 +1,10 @@
 PLEASE READ: This project is not partnered with or represent The Amber Molecular Dynamics, only as a template.
 To test our knowledge of the various tools we learned in CS 3338: Software Engineer Tools at Cal State LA
 
-Here is the original website: ambermd.org
+Here is the original website: <ambermd.org> 
+
+Link for Jira: <https://jsalare.atlassian.net/jira/software/projects/AMWP/summary?atlOrigin=eyJpIjoiYTYzNDU0NzYxNzYzNGQ2OWFhMDBhMmM2YTAzOWUyZTgiLCJwIjoiaiJ9>
+
 
 # CS3338-Final Project
 

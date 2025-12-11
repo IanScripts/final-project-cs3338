@@ -1,0 +1,147 @@
+\documentclass[12pt]{article}
+\usepackage{geometry}
+\usepackage{hyperref}
+\usepackage{graphicx}
+\geometry{margin=1in}
+
+\title{Design Specification \\ \large Amber Molecular Dynamics Web Interface}
+\author{Group Number 7}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+\tableofcontents
+\newpage
+
+%---------------------------------------
+\section*{Version Description}
+\addcontentsline{toc}{section}{Version Description}
+
+\begin{center}
+\begin{tabular}{|p{3cm}|p{9cm}|p{3cm}|}
+\hline
+\textbf{Version} & \textbf{Description} & \textbf{Date Added} \\ \hline
+1.0 & Initial Design Specification for Snapshot 1, including document outline and structure. & \today \\ \hline
+1.1 & Added Design Overview section describing the full workflow from login to results retrieval. & \today \\ \hline
+1.2 & Added detailed UI Page Specifications for Login, Dashboard, New Simulation, Job Detail, Results Download, and Settings pages. & \today \\ \hline
+\end{tabular}
+\end{center}
+
+%---------------------------------------
+% Diagrams
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.9\textwidth]{workflow.png}
+    \caption{User WorkFlow}
+    \label{fig:workflow}
+\end{figure}
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.7\textwidth]{uisitemap.png}
+    \caption{UI sitemap and navigation structure}
+    \label{fig:uisitemap}
+\end{figure}
+
+%---------------------------------------
+\section{Introduction}
+
+\subsection{Purpose}
+This Design Specification outlines the visual layout, functional flow, and
+page-by-page breakdown of the Amber Molecular Dynamics Web Interface.
+It describes how users interact with the system and how each page supports
+the simulation workflow described in the SRS and SDD.
+
+\subsection{Intended Audience}
+This document is intended for:
+\begin{itemize}
+    \item UI/UX designers
+    \item Developers implementing screens and components
+    \item Testers building UI-based test cases
+\end{itemize}
+
+%---------------------------------------
+\section{Design Overview}
+
+The interface guides users through:
+\begin{enumerate}
+    \item Logging in or registering
+    \item Creating a new simulation
+    \item Configuring MD parameters
+    \item Submitting a job
+    \item Monitoring progress
+    \item Downloading results
+\end{enumerate}
+
+%---------------------------------------
+\section{Page Specifications}
+
+\subsection{Login / Registration Page}
+\textbf{Purpose:} Provide secure access.
+
+\textbf{Elements:}
+\begin{itemize}
+    \item Username, email (registration), password fields
+    \item ``Login'' button
+    \item ``Create Account'' link
+\end{itemize}
+
+%---------------------------------------
+\subsection{Dashboard Page}
+\textbf{Purpose:} Central hub of simulations.
+
+\textbf{Elements:}
+\begin{itemize}
+    \item Table of simulations with status like Pending, Running, Completed, and Failed
+    \item ``New Simulation'' button
+    \item ``View Details'' and ``Download Outputs'' buttons
+\end{itemize}
+
+%---------------------------------------
+\subsection{New Simulation Setup Page}
+\textbf{Purpose:} Configure a new Amber MD run.
+
+\textbf{Form Sections:}
+\begin{itemize}
+    \item Structure file upload (PDB/mol2)
+    \item Force field selection
+    \item Temperature, simulation length, time step
+    \item Minimization / equilibration options
+\end{itemize}
+
+%---------------------------------------
+\subsection{Job Detail Page}
+\textbf{Purpose:} Show execution details.
+
+\textbf{Elements:}
+\begin{itemize}
+    \item Job status and timestamps
+    \item Log output area
+    \item Run parameters summary
+\end{itemize}
+
+%---------------------------------------
+\subsection{Results Download Page}
+\textbf{Purpose:} Provide access to outputs.
+
+\textbf{Downloads:}
+\begin{itemize}
+    \item Trajectory file (.mdcrd)
+    \item Topology file (.prmtop)
+    \item Restart files
+    \item Energy logs
+\end{itemize}
+
+%---------------------------------------
+\subsection{Settings Page (Features to be added later)}
+\textbf{Purpose:} Configure system preferences.
+
+\textbf{Options:}
+\begin{itemize}
+    \item Amber installation path
+    \item Compute resource preferences
+\end{itemize}
+
+\end{document}

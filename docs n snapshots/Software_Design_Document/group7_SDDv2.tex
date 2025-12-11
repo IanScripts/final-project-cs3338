@@ -1,0 +1,192 @@
+\documentclass[12pt]{article}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{longtable}
+\usepackage{array}
+\geometry{margin=1in}
+
+\title{Software Design Document (SDD) \\ \large Amber Molecular Dynamics Web Interface}
+\author{Group number 7}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\tableofcontents
+\newpage
+
+%---------------------------------------
+\section*{Version Description}
+\addcontentsline{toc}{section}{Version Description}
+
+\begin{longtable}{|m{2.5cm}|m{9cm}|m{3cm}|}
+\hline
+\textbf{Version} & \textbf{Description} & \textbf{Date Added} \\ \hline
+
+1.0 & Initial SDD including architecture overview, UI overview, and workflow. & \today \\ \hline
+
+1.1 & Added Component Breakdown section (Authentication, Simulation, Job, Result Controllers). & \today \\ \hline
+
+1.2 & Added Database Design section (Users, Simulations, Jobs, and Files tables). & \today \\ \hline
+\begin{figure}
+    \centering
+    \includegraphics[width=1.0\linewidth]{architecture_diagram.png}
+    \caption{Enter Caption}
+    \label{fig:placeholder}
+\end{figure}
+\end{longtable}
+
+
+%---------------------------------------
+\section{Introduction}
+\subsection{Purpose}
+The purpose of this Software Design Document is to describe the
+architecture and internal design of the \textbf{Amber Molecular Dynamics Web Interface}.
+This system provides a user-friendly way to configure, submit, and monitor MD simulations
+using the Amber software suite.
+
+\subsection{Intended Audience}
+This document is intended for:
+\begin{itemize}
+    \item Developers implementing and maintaining the system.
+    \item Testers validating system behavior.
+    \item Future contributors to the application.
+\end{itemize}
+
+\subsection{System Overview}
+Users can:
+\begin{itemize}
+    \item Upload input structures and parameter files.
+    \item Configure simulation parameters such as force fields, temperature, time steps.
+    \item Submit jobs to a backend Amber installation.
+    \item View job status and retrieve output files.
+\end{itemize}
+
+%---------------------------------------
+\section{Site Breakdown}
+\begin{itemize}
+    \item \textbf{Home Page} – Entry point with login/register buttons.
+    \item \textbf{Dashboard Page} – Displays all user simulations and job statuses.
+    \item \textbf{Simulation Setup Page} – Form for simulation parameters and file uploads.
+    \item \textbf{Job Detail Page} – Shows job information, timestamps, and logs.
+    \item \textbf{Results Download Page} – Provides links to simulation output files.
+    \item \textbf{Settings Page} (optional future work) – Manage compute settings and user preferences.
+\end{itemize}
+
+%---------------------------------------
+\section{System Architecture}
+
+\subsection{High-Level Architecture}
+At a high level, the system follows a multi-tier architecture:
+\begin{itemize}
+    \item \textbf{Frontend}: Web UI for simulation configuration and monitoring.
+    \item \textbf{Backend}: REST controllers that validate requests, manage jobs, and interact with Amber.
+    \item \textbf{Database}: Stores users, simulations, job metadata, and file references.
+\end{itemize}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=\textwidth]{architecture_diagram.png}
+\caption{High-Level Architecture Diagram of the Amber MD Web Interface}
+\end{figure}
+
+\subsection{System Workflow}
+\begin{enumerate}
+    \item User logs in to the web interface.
+    \item User creates a simulation configuration and uploads files.
+    \item Backend validates inputs and saves configuration.
+    \item Job execution layer generates Amber input scripts and runs the job.
+    \item Amber runs the MD simulation on server/cluster.
+    \item Status is periodically checked and UI is updated.
+    \item User downloads results after completion.
+\end{enumerate}
+
+\subsection{Component Breakdown}
+\subsubsection{Server-Side Components}
+\begin{itemize}
+    \item \textbf{Authentication Controller}
+    \item \textbf{Simulation Controller}
+    \item \textbf{Job Controller}
+    \item \textbf{Result Controller}
+\end{itemize}
+
+\subsubsection{Client-Side Components}
+\begin{itemize}
+    \item Login / Registration Pages
+    \item Dashboard
+    \item Simulation Form Page
+    \item Job Detail Page
+\end{itemize}
+
+\subsubsection{External Services}
+\begin{itemize}
+    \item Amber MD package commands.
+    \item Filesystem for storage.
+\end{itemize}
+
+%---------------------------------------
+\section{User Interface}
+
+\subsection{UI Overview}
+The interface presents a guided workflow for running simulations.
+
+\subsection{Page Breakdown}
+
+\subsubsection{Dashboard Page}
+Displays all user simulations and their statuses (Pending, Running, Completed, Failed)
+along with buttons for viewing details and downloading outputs.
+
+\subsubsection{Simulation Setup Page}
+Wizard-like interface where the user uploads structure files,
+selects force fields, sets temperature, and other MD parameters.
+
+\subsubsection{Job Detail Page}
+Displays job logs, timestamps, run parameters, Amber command used,
+and progress indicators.
+
+\subsubsection{Results Download Page}
+Provides organized download links for:
+\begin{itemize}
+    \item Trajectory files
+    \item Topology files
+    \item Energy logs
+    \item Restart files
+\end{itemize}
+
+%---------------------------------------
+\section{Database Design}
+The database stores:
+\begin{itemize}
+    \item \textbf{Users}: login credentials, metadata.
+    \item \textbf{Simulations}: configuration parameters and metadata.
+    \item \textbf{Jobs}: statuses, timestamps, and commands.
+    \item \textbf{Files}: references to input/output paths.
+\end{itemize}
+
+%---------------------------------------
+\section{Glossary}
+\begin{longtable}{|m{4cm}|m{10cm}|}
+\hline
+\textbf{Acronym} & \textbf{Definition} \\ \hline
+MD & Molecular Dynamics \\ \hline
+UI & User Interface \\ \hline
+API & Application Programming Interface \\ \hline
+DB & Database \\ \hline
+PDB & Protein Data Bank \\ \hline
+\end{longtable}
+
+%---------------------------------------
+\section{References}
+\begin{itemize}
+    \item Amber Official Website: \url{https://ambermd.org}
+    \item Course materials from CS 3338.
+    \item Amber Official GitHub
+\begin{figure}
+        \centering
+    \end{figure}
+        \url{https://github.com/amber-md}
+\end{itemize}
+
+\end{document}

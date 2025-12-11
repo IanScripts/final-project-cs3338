@@ -1,0 +1,145 @@
+\documentclass[12pt]{article}
+\usepackage{geometry}
+\usepackage{hyperref}
+\usepackage{longtable}
+\usepackage{array}
+\geometry{margin=1in}
+
+\title{Software Requirements Specification (SRS) \\ \large Amber Molecular Dynamics Web Interface}
+\author{Group number 7}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\tableofcontents
+\newpage
+
+%---------------------------------------
+\section*{Version Description}
+\addcontentsline{toc}{section}{Version Description}
+
+\begin{longtable}{|m{2.5cm}|m{9cm}|m{3cm}|}
+\hline
+\textbf{Version} & \textbf{Description} & \textbf{Date Added} \\ \hline
+
+1.0 & Initial SRS draft defining purpose, audience, and system overview. & \today \\ \hline
+
+1.1 & Added External Interface Requirements section (UI requirements, software interfaces). & \today \\ \hline
+
+1.2 & Added Legal and Ethical Considerations section (data privacy, license rules). & \today \\ \hline
+
+\end{longtable}
+
+
+
+
+%---------------------------------------
+\section{Introduction}
+\subsection{Purpose}
+The purpose of this Software Requirements Specification (SRS) is to
+define the functional and non-functional requirements of the
+\textbf{Amber Molecular Dynamics Web Interface}. The system
+aims to make it easier for users to configure, run, and monitor Amber
+molecular dynamics simulations without manually dealing with command-line interfaces.
+
+\subsection{Intended Audience}
+This document is intended for:
+\begin{itemize}
+    \item Developers implementing the system.
+    \item Testers verifying that requirements are met.
+    \item Researchers who will use the system to run Amber MD simulations.
+\end{itemize}
+
+\subsection{Overview of the Software}
+The Amber Molecular Dynamics Web Interface is a web application that:
+\begin{itemize}
+    \item Provides forms and wizards for configuring Amber simulations.
+    \item Submits jobs to an Amber installation on the server or compute cluster.
+    \item Tracks job status and notifies users upon completion.
+    \item Allows users to download key output files.
+\end{itemize}
+
+%---------------------------------------
+\section{External Interface Requirements}
+\subsection{User Interface}
+The user interface must:
+\begin{itemize}
+    \item Allow users to register, log in, and log out.
+    \item Provide a dashboard listing simulations and statuses.
+    \item Provide a ``New Simulation" page with fields for structure file,
+          force field, simulation length, temperature, and other parameters.
+    \item Show job statuses: Pending, Running, Completed, Failed.
+    \item Provide links/buttons to download result files.
+\end{itemize}
+
+\subsection{Software Interfaces}
+The system will interact with:
+\begin{itemize}
+    \item \textbf{Amber MD Software}: Executable Amber commands on server-side.
+    \item \textbf{Operating System}: For launching processes and reading/writing files.
+    \item \textbf{Database Management System}: For storing users, simulations, jobs, files.
+\end{itemize}
+
+%---------------------------------------
+\section{Legal and Ethical Considerations}
+\subsection{Data Storage and Privacy}
+\begin{itemize}
+    \item The system will store user accounts including username, email, and password hash.
+    \item Passwords must never be stored in plain text.
+    \item Simulation data may represent sensitive research and must be kept private.
+\end{itemize}
+
+\subsection{Legal and Ethical Issues}
+\begin{itemize}
+    \item The system must comply with Amber license requirements.
+    \item Users are responsible for ensuring they own rights to uploaded data.
+    \item No simulation data may be shared without explicit consent.
+\end{itemize}
+
+%---------------------------------------
+\section{Non-Functional Requirements}
+
+\subsection{Performance Requirements}
+\begin{itemize}
+    \item The system must update job status at least every 30 seconds.
+    \item Input file generation for a simulation setup must complete within 2 seconds.
+\end{itemize}
+
+\subsection{Security Requirements}
+\begin{itemize}
+    \item All passwords must be hashed using a secure algorithm.
+    \item Users may only access their own simulations and files.
+\end{itemize}
+
+\subsection{Usability Requirements}
+\begin{itemize}
+    \item A new simulation setup workflow must be completable in under 5 minutes.
+    \item UI forms must validate required fields before submission.
+\end{itemize}
+
+\subsection{Reliability Requirements}
+\begin{itemize}
+    \item System must maintain simulation metadata even if the backend restarts.
+\end{itemize}
+
+\subsection{System Constraints}
+\begin{itemize}
+    \item Requires a valid licensed installation of Amber.
+    \item Job execution depends on available CPU/GPU compute resources.
+\end{itemize}
+
+%---------------------------------------
+\section{Glossary}
+\begin{longtable}{|m{4cm}|m{10cm}|}
+\hline
+\textbf{Acronym} & \textbf{Definition} \\ \hline
+Amber & Suite of biomolecular simulation tools \\ \hline
+MD & Molecular Dynamics \\ \hline
+UI & User Interface \\ \hline
+API & Application Programming Interface \\ \hline
+PDB & Protein Data Bank file format \\ \hline
+\end{longtable}
+
+\end{document}

@@ -1,0 +1,11 @@
+During this sprint, focus shifted from building features to stabilizing the application, identifying lingering defects, and validating functionality end-to-end.
+
+A full regression suite was executed in TestRail using Run #3. The test run included authentication tests, dashboard UI validation, simulation creation workflows, and simulation list behavior. Several tests passed successfully, reflecting improvements made during the project. However, two key issues remained:
+
+Logout did not properly clear the user session, causing a security issue.
+
+The simulation list did not automatically refresh without manual reload.
+
+These defects were documented and linked to the corresponding Jira issues. The regression run provided clear visibility into the remaining gaps and helped define areas that would require further development in a real-world project.
+
+Overall, the project demonstrates the full QA lifecycle using Jira and TestRail, from initial setup and test case design to execution, bug discovery, and retrospection. Sprint-based development allowed the team to track progress clearly, while TestRail provided structured reporting and ensured repeatable, traceable testing. Throughout the project, testing coverage expanded organically as new features and bugs emerged. Future enhancements would include adding automated tests for high-priority workflows and implementing continuous integration to streamline regression testing.

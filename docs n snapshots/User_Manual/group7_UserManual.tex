@@ -1,0 +1,118 @@
+\documentclass[12pt]{article}
+\usepackage{geometry}
+\usepackage{hyperref}
+\usepackage{longtable}
+\geometry{margin=1in}
+
+\title{User Manual \\ \large Amber Molecular Dynamics Web Interface}
+\author{Group Number 7}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+\tableofcontents
+\newpage
+
+%---------------------------------------
+\section{Introduction}
+
+This User Manual provides step-by-step instructions for using the Amber Molecular Dynamics
+Web Interface. It assists researchers in submitting simulations, monitoring job progress,
+and downloading simulation output files.
+
+%---------------------------------------
+\section{Getting Started}
+
+\subsection{Accessing the System}
+Users access the system via a web browser, but in order to access features they will need to create an account.
+
+\subsection{Creating an Account}
+\begin{enumerate}
+    \item Navigate to the Login Page.
+    \item Click “Create Account.”
+    \item Enter username, email, and password.
+\end{enumerate}
+
+\subsection{Logging In}
+\begin{enumerate}
+    \item Enter your username and password.
+    \item Click “Login.”
+\end{enumerate}
+
+%---------------------------------------
+\section{Running a Simulation}
+
+\subsection{Step 1: Open the New Simulation Page}
+Click “New Simulation” on the dashboard.
+
+\subsection{Step 2: Upload Files}
+Upload:
+\begin{itemize}
+    \item Structure file (PDB/mol2)
+    \item Force field parameters (optional)
+\end{itemize}
+
+\subsection{Step 3: Enter Simulation Parameters}
+Fill in:
+\begin{itemize}
+    \item Force field
+    \item Temperature
+    \item Simulation length
+    \item Time step
+    \item Minimization/equilibration settings
+\end{itemize}
+
+\subsection{Step 4: Submit Simulation}
+Click “Submit.”  
+A simulation entry will appear in your dashboard.
+
+%---------------------------------------
+\section{Monitoring Job Status}
+
+Simulation statuses:
+\begin{itemize}
+    \item \textbf{Pending} – Waiting to run
+    \item \textbf{Running} – Amber execution in progress
+    \item \textbf{Completed} – Finished successfully
+    \item \textbf{Failed} – Error occurred
+\end{itemize}
+
+Click “View Details” to:
+\begin{itemize}
+    \item Read live log output
+    \item View timestamps
+    \item Inspect progress indicators
+\end{itemize}
+
+%---------------------------------------
+\section{Downloading Results}
+
+Once a job completes:
+\begin{enumerate}
+    \item Go to Dashboard
+    \item Click “Download Outputs”
+\end{enumerate}
+
+Available downloads:
+\begin{itemize}
+    \item Trajectory file (.mdcrd)
+    \item Topology file (.prmtop)
+    \item Energy log
+    \item Restart file
+\end{itemize}
+
+%---------------------------------------
+\section{Troubleshooting}
+
+\begin{itemize}
+    \item \textbf{Simulation failed}: Check input file formats and parameters.
+    \item \textbf{No output files}: Verify job completed successfully.
+    \item \textbf{Cannot log in}: Reset password using “Forgot Password.”
+\end{itemize}
+
+%---------------------------------------
+\section{Contact}
+For assistance, contact the project maintainers.
+
+\end{document}

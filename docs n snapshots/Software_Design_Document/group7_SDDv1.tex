@@ -1,0 +1,145 @@
+\documentclass[12pt]{article}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{longtable}
+\usepackage{array}
+\geometry{margin=1in}
+
+\title{Software Design Document (SDD) \\ \large Amber Molecular Dynamics Web Interface}
+\author{Group number 7}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\tableofcontents
+\newpage
+
+%---------------------------------------
+\section*{Version Description}
+\addcontentsline{toc}{section}{Version Description}
+
+\begin{longtable}{|m{2.5cm}|m{9cm}|m{3cm}|}
+\hline
+\textbf{Version} & \textbf{Description} & \textbf{Date Added}\\\hline
+1.0 & SDD for Snapshot 1 that includes architecture, UI overview, and database design. & \today\\\hline
+\end{longtable}
+
+%---------------------------------------
+\section{Introduction}
+\subsection{Purpose}
+The purpose of this Software Design Document is to describe the
+architecture and internal design of the \textbf{Amber Molecular Dynamics Web Interface}.This system provides a user-friendly way to configure,
+submit, and monitor molecular dynamics simulations using the
+Amber software suite.
+
+\subsection{Intended Audience}
+This document is intended for:
+\begin{itemize}
+    \item Developers implementing and maintaining the system.
+    \item Testers validating the system behavior.
+    \item Future contributors may want to work on the system in the future
+\end{itemize}
+
+\subsection{System Overview}
+The system exposes a web-based interface for running Amber MD
+simulations. Users can:
+\begin{itemize}
+    \item Upload or define input structures and parameter files.
+    \item Configure simulation parameters, things like force fields, temperature, time steps, etc.
+    \item Submit jobs to a backend Amber installation or job queue.
+    \item View job status and retrieve basic output information.
+\end{itemize}
+
+%---------------------------------------
+\section{System Architecture}
+\subsection{High-Level Architecture}
+At a high level, the system follows a multi-tier architecture:
+\begin{itemize}
+    \item \textbf{Client-side (Frontend)}: Web UI where users configure simulations,
+          view job status, and download results.
+    \item \textbf{Server-side (Backend)}: REST endpoints or controllers that
+          validate requests, persist data, and interact with Amber.
+    \item \textbf{Database}: Stores user accounts, simulation configurations,
+          job metadata, and links to result files.
+\end{itemize}
+
+\subsection{System Workflow}
+A typical workflow:
+\begin{enumerate}
+    \item User logs in to the web interface.
+    \item User creates a new simulation configuration and uploads input files.
+    \item The backend validates the configuration and saves it in the database.
+    \item The job execution layer generates Amber input scripts and submits a job.
+    \item Amber runs the molecular dynamics simulation on the server or cluster.
+    \item The system periodically checks job status and updates the user interface.
+    \item When complete, the user can download output files or view summary data.
+\end{enumerate}
+
+\subsection{Component Breakdown}
+\subsubsection{Server-Side Components}
+\begin{itemize}
+    \item \textbf{Authentication Controller}: Handles login, registration, and session management.
+    \item \textbf{Simulation Controller}: CRUD operations for simulation setups.
+    \item \textbf{Job Controller}: Submits and monitors Amber jobs.
+    \item \textbf{Result Controller}: Exposes endpoints to retrieve results.
+\end{itemize}
+
+\subsubsection{Client-Side Components}
+\begin{itemize}
+    \item \textbf{Login / Registration Pages}
+    \item \textbf{Dashboard Page}: List of user simulations and job statuses.
+    \item \textbf{Simulation Form Page}: UI to select force field, temperature, time, etc.
+    \item \textbf{Job Detail Page}: Detailed status and links to outputs.
+\end{itemize}
+
+\subsubsection{External Services / Integrations}
+\begin{itemize}
+    \item \textbf{Amber MD Package}: Can be used via command-line tools installed on the server.
+    \item \textbf{Filesystem or Storage}: Stores input and output files.
+\end{itemize}
+
+%---------------------------------------
+\section{User Interface}
+\subsection{How to Use the System}
+\begin{enumerate}
+    \item Navigate to the home page and log in or create an account.
+    \item From the dashboard, click ``New Simulation".
+    \item Upload the structure file and any required parameter files.
+    \item Fill out simulation settings
+    \item Submit the job and monitor status on the dashboard.
+    \item After completion, click on the job to view details and download outputs.
+\end{enumerate}
+
+%---------------------------------------
+\section{Database Design}
+The database stores:
+\begin{itemize}
+    \item \textbf{Users}: login credentials and profile information.
+    \item \textbf{Simulations}: configuration parameters and metadata.
+    \item \textbf{Jobs}: job status, timestamps, and Amber command used.
+    \item \textbf{Files}: references to input and output files on disk.
+\end{itemize}
+%---------------------------------------
+\section{Glossary}
+\begin{longtable}{|m{4cm}|m{10cm}|}
+\hline
+\textbf{Acronym} & \textbf{Definition} \\ \hline
+MD & Molecular Dynamics \\ \hline
+UI & User Interface \\ \hline
+API & Application Programming Interface \\ \hline
+DB & Database \\ \hline
+PDB & Protein Data Bank file format \\ \hline
+\end{longtable}
+
+%---------------------------------------
+\section{References}
+\begin{itemize}
+    \item Amber Molecular Dynamics Official Website: \url{https://ambermd.org}
+    \item R. Salomon-Ferrer, D.A. Case, R.C. Walker. An overview of the Amber biomolecular simulation package.
+    \item Course slides and assignment description for CS 3338.
+\end{itemize}
+
+\end{document}

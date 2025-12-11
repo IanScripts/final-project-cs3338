@@ -1,0 +1,9 @@
+During Snapshot 2, the team completed Sprint 1 work in Jira and created the initial QA structure within TestRail. Two test suites were created: an Authentication Suite and a Dashboard UI Suite. Each suite includes multiple test cases based on early project functionality such as logging in and loading the dashboard.
+
+Two TestRail runs were executed. Several tests passed successfully, while two expected failures were observed:
+
+Login with empty password (authentication validation bug)
+
+Dashboard title alignment (UI layout issue)
+
+These failures correspond directly to Sprint 1 Jira bugs (AMWP-10 and AMWP-11). A TestRail Project Summary report was generated and exported for review. Snapshot 2 demonstrates successful setup, execution, and documentation of early QA activities, forming the foundation for further testing in Snapshot 3.

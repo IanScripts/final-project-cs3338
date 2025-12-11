@@ -1,0 +1,9 @@
+Snapshot 3 focuses on Sprint 2 functionality, specifically the new Simulation features added to the Amber MD Web Portal. Several new Jira issues were created, including a story for the “New Simulation” form, an update to the simulation list, xpanded TestRail coverage. Two new bugs were discovered during testing: invalid temperature values being accepted and finished simulations not appearing in dashboard.
+
+A new TestRail suite, “Simulation Management UI,” was created with test cases covering simulation form validation, simulation display behavior, and simulation status updates. These were executed in Test Run #2, where multiple expected failures were observed:
+
+Invalid temperature test failed
+
+Finished simulations not appearing failed 
+
+A TestRail Project Summary report was generated to document these results. Snapshot 3 demonstrates expanded test coverage, identification of new defects, and the progression from basic UI testing to functional workflow testing.

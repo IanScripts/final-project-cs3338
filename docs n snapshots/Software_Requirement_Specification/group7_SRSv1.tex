@@ -1,0 +1,113 @@
+\documentclass[12pt]{article}
+\usepackage{geometry}
+\usepackage{hyperref}
+\usepackage{longtable}
+\geometry{margin=1in}
+
+\title{Software Requirements Specification (SRS) \\ \large Amber Molecular Dynamics Web Interface}
+\author{Group number 7}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\tableofcontents
+\newpage
+
+%---------------------------------------
+\section*{Version Description}
+\addcontentsline{toc}{section}{Version Description}
+
+\begin{longtable}{|m{2.5cm}|m{9cm}|m{3cm}|}
+\hline
+\textbf{Version} & \textbf{Description} & \textbf{Date Added} \\ \hline
+1.0 & SRS for Snapshot 1 that helps defining requirements for the Amber MD web interface. & \today \\ \hline
+\end{longtable}
+
+%---------------------------------------
+\section{Introduction}
+\subsection{Purpose}
+The purpose of this Software Requirements Specification (SRS) is to
+define the functional and non-functional requirements of the
+\textbf{Amber Molecular Dynamics Web Interface}. The system
+aims to make it easier for users to configure, run, and monitor Amber
+molecular dynamics simulations without manually dealing with all
+command-line options.
+
+\subsection{Intended Audience}
+This document is intended for:
+\begin{itemize}
+    \item Developers implementing the system.
+    \item Testers verifying that requirements are met.
+    \item Researchers who will use the system to run Amber MD simulations.
+\end{itemize}
+
+\subsection{Overview of the Software}
+The Amber Molecular Dynamics Web Interface is a web application that:
+\begin{itemize}
+    \item Provides forms and wizards for configuring Amber simulations.
+    \item Submits jobs to an Amber installation on the server or cluster.
+    \item Tracks job status and notifies users upon completion.
+    \item Allows users to download key output files.
+\end{itemize}
+
+%---------------------------------------
+\section{External Interface Requirements}
+\subsection{User Interface}
+The user interface must:
+\begin{itemize}
+    \item Allow users to register, log in, and log out.
+    \item Provide a dashboard listing all simulations and their statuses.
+    \item Provide a ``New Simulation" page with fields for:
+          structure file, force field, simulation length, temperature,
+          and other key parameters.
+    \item Show job status like Pending, Running, Completed, or Failed.
+    \item Provide links or buttons to download result files.
+\end{itemize}
+
+\subsection{Software Interfaces}
+The system will interact with:
+\begin{itemize}
+    \item \textbf{Amber MD Software}: Executable commands
+          on the server. The backend will generate proper input files and
+          invoke these commands.
+    \item \textbf{Operating System}: For launching processes and accessing
+          the file system.
+    \item \textbf{Database Management System}: For storing users, simulations,
+          jobs, and file references.
+\end{itemize}
+
+%---------------------------------------
+\section{Legal and Ethical Considerations}
+\subsection{Data Storage and Privacy}
+\begin{itemize}
+    \item The system will store user accounts that have info like username, email, password hash.
+    \item Passwords must never be stored in plain text.
+    \item Simulation data may be sensitive research data
+          and must be accessible only to the owner.
+\end{itemize}
+
+\subsection{Legal and Ethical Issues}
+\begin{itemize}
+    \item The system must respect the Amber licensing terms and only run
+          on properly licensed installations.
+    \item Users should be informed that they are responsible for any
+          data they upload.
+    \item The system must not share simulation data with third parties
+          without user consent.
+\end{itemize}
+
+%---------------------------------------
+\section{Glossary}
+\begin{longtable}{|m{4cm}|m{10cm}|}
+\hline
+\textbf{Acronym} & \textbf{Definition} \\ \hline
+Amber & Suite of biomolecular simulation programs for molecular dynamics \\ \hline
+MD & Molecular Dynamics \\ \hline
+UI & User Interface \\ \hline
+API & Application Programming Interface \\ \hline
+PDB & Protein Data Bank file format \\ \hline
+\end{longtable}
+
+\end{document}

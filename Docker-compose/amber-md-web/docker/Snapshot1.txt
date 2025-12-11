@@ -1,0 +1,2 @@
+Snapshot 1:
+Create the minimal, functioning multi-tier app skeleton that reflects the SRS/SDD: a frontend UI, a backend API, Amber compute service (amber-md), and a reverse proxy (nginx). This snapshot proves the high-level architecture and that containers build and communicate on a single host.

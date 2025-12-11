@@ -1,0 +1,19 @@
+In snapshot 4 we polish the deployment for demonstration: pin image versions, add health checks, apply restart policies, add .env usage, add .gitignore, tidy Dockerfiles, and document final run instructions. This snapshot is your final deliverable for grading: it looks like a real project.
+
+The following updates include:
+
+Pinned image tags & versions.
+
+Healthcheck sections added to services.
+
+Restart policies.
+
+Environment moved to .env (loaded by compose or Docker).
+
+Volumes & logging clarified.
+
+Services will automatically restart on failure (controlled policy).
+
+Compose uses pinned images so builds are repeatable.
+
+Health checks allow docker compose ps to show service health and help graders see system readiness

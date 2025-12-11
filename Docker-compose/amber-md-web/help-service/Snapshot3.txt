@@ -1,0 +1,6 @@
+In snapshot 3 we added a independent microservice that serves a knowledge base, documentation, and MD tips. This demonstrates microservice extensibility, documentation availability, and how to evolve the system by adding new services.
+
+Services include:
+help-service — FastAPI/Flask microservice exposing /help, /tips, or /docs endpoints. Returns static or DB-driven documentation, searchable tips, and optionally serves markdown files or a small web UI.
+
+nginx updated to proxy /help to the help-service or frontend to link to docs. Routes /help/* to help-service so the UI can link to http://<host>/help.
